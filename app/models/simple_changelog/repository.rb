@@ -25,7 +25,7 @@ module SimpleChangelog
   		if @tags.empty?  			
   			@commits.empty? ? '' : 'HEAD'
   		else
-  			@tags.first.name
+  			@tags.last.name
   		end
   	end
 
