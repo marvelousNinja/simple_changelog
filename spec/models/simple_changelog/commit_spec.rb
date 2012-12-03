@@ -6,14 +6,12 @@ module SimpleChangelog
   	
   	context :methods do
 	  	it { should respond_to :message }
-	  	it { should respond_to :author }
 	  	it { should respond_to :date }
 	  	it { should respond_to :id }
 	  end
 
 	  context :return_values do
 	  	its(:message) { should_not be_nil }
-	  	its(:author) { should_not be_nil }
 	  	its(:date) { should_not be_nil }
 	  	its(:id) { should_not be_nil }
 		end

@@ -1,7 +1,7 @@
 <div class="version-tag">
-	<h2 class="underlined"><%= version_tag.name %>&nbsp;(<%= long_date_format(version_tag.tag_date) %>)</h2>
+	<h2 class="underlined"><%= version_tag.name %>&nbsp;(<%= long_date_format(version_tag.date) %>)</h2>
 	<section class="commits">
 		<%= render partial: 'commit', 
-			   	   collection: history[version_tag] %>
+			   	   collection: changelog[version_tag] %>
 	</section>
 </div>

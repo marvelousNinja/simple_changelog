@@ -9,8 +9,8 @@ module SimpleChangelog
   			tag_class = tag.gsub(/[^A-Za-z]/, '').downcase
   			content_tag(:span, class:tag_class) { tag }
       end
- 			
-  		render :inline => highlighted_message
+      
+ 			highlighted_message.html_safe
   	end
 
     def current_version_tag
