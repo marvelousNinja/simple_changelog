@@ -11,10 +11,10 @@ module SimpleChangelog
   		if @tags.any? || @commits.any?
 	  		middle_tags = convert_tags(@tags).sort_by { |t| t.date }
 	  		tags = [tail_tag] + middle_tags + [head_tag]
-			
+			  tags.reverse!
 
-				tags.reverse.each_cons(2) do |prev, succ|
-			    history[prev] = commits_between(succ, prev)
+				tags.each_cons(2) do |prev, succ|
+			    history[prev] = commits_between(succ, prev).sort_by { |c| c.message }
 				end
 			end
 
@@ -43,6 +43,7 @@ module SimpleChangelog
 
   	def commits_between(from, to)
   		commits = @repo.commits_between(from.commit_id, to.commit_id)
+      commits << @repo.commit(from.commit_id)
   		convert_commits(commits)
   	end
 
