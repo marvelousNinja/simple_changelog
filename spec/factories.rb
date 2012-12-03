@@ -7,7 +7,6 @@ module SimpleChangelog
 
   FactoryGirl.define do
     factory :repository, class: Repository do
-      
       trait :empty do 
         initialize_with { Repository.new(empty) }
       end
@@ -18,6 +17,24 @@ module SimpleChangelog
 
       trait :with_tags do 
         initialize_with { Repository.new(with_tags) }
+      end
+    end
+
+    factory :commit, class: SimpleChangelog::Commit do
+      initialize_with do 
+        Commit.new('Initial commit',
+                   'Derp',
+                   Time.now,
+                   '234567890123') 
+      end
+    end
+
+    factory :tag, class: SimpleChangelog::Tag do
+      initialize_with do 
+        Tag.new('0.0.1',
+        'Derp',
+        Time.now,
+        '34567890987')
       end
     end
   end

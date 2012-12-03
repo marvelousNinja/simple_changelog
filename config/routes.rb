@@ -1,4 +1,5 @@
 SimpleChangelog::Engine.routes.draw do
-  get "repositories/changelog"
+  get "repositories/show"
 
+  root to: "repositories#show"
 end

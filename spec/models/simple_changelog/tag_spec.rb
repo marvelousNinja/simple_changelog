@@ -2,15 +2,7 @@ require 'spec_helper'
 
 module SimpleChangelog
   describe Tag do
-  	before(:each) do
-  		@init_tag = mock('init tag',
-  										  name: '0.0.1',
-  										  author: 'Derp',
-  										  tag_date: Time.now)
-  		@init_tag.stub_chain(:commit, :id).and_return('1234')
-  	end
-
-  	subject { Tag.new(@init_tag) }
+  	subject { build(:tag) }
   	
   	context :methods do
 	  	it { should respond_to :name }

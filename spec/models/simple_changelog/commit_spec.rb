@@ -2,15 +2,7 @@ require 'spec_helper'
 
 module SimpleChangelog
   describe Commit do
-  	before(:each) do
-  		@init_commit = mock('init commit',
-  										     short_message: 'Initial commit',
-  										     author: 'Derp',
-  										     date: Time.now,
-  											   id: '1234')
-  	end
-
-  	subject { Commit.new(@init_commit) }
+  	subject { build(:commit) }
   	
   	context :methods do
 	  	it { should respond_to :message }
