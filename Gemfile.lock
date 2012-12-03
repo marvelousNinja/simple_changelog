@@ -1,8 +1,8 @@
 PATH
   remote: .
   specs:
-    simple_changelog (0.0.1)
-      grit
+    simple_changelog (0.0.3)
+      grit (= 2.5.0)
       rails (~> 3.2.9)
 
 GEM
