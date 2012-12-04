@@ -4,45 +4,45 @@
 */
 
 #app-changelog {
-	font-family: Helvetica, arial, sans-serif;	
-	width: 1000px;
-	margin: 0 auto;
+  font-family: Helvetica, arial, sans-serif;  
+  width: 1000px;
+  margin: 0 auto;
 }
 
 .underlined {
-	border-bottom: 1px solid #CCC;
+  border-bottom: 1px solid #CCC;
 }
 
 #app-changelog .commits {
-	margin-left: 50px;
+  margin-left: 50px;
 }
 
 .commit .dev, .commit .d {
-	color: #2E64FE;
-	font-weight: bold;
+  color: #2E64FE;
+  font-weight: bold;
 }
 
 .commit .fix, .commit .f {
-	color: #04B431;
-	font-weight: bold;
+  color: #04B431;
+  font-weight: bold;
 }
 
 .commit .ref, .commit .r {
-	color: #FF8000;
-	font-weight: bold;
+  color: #FF8000;
+  font-weight: bold;
 }
 
 .commit .cros {
-	color: #000000;
-	font-weight: bold;
+  color: #000000;
+  font-weight: bold;
 }
 
 .commit .bug, .commit .b {
-	color: #B40404;
-	font-weight: bold;
+  color: #B40404;
+  font-weight: bold;
 }
 
 .commit .new, .commit .n {
-	color: #6A0888;
-	font-weight: bold;
+  color: #6A0888;
+  font-weight: bold;
 }
