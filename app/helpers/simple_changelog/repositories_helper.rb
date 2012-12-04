@@ -16,5 +16,11 @@ module SimpleChangelog
     def current_version_tag
       Repository.new.current_version_tag
     end
+
+    def changelog_link
+      unless Rails.env.production?
+        link_to current_version_tag, simple_changelog_url
+      end
+    end
   end
 end

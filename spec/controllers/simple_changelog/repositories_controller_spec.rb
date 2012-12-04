@@ -6,7 +6,7 @@ module SimpleChangelog
         repo = double('repo')
         repo.stub(:kind_of?).with(Repository).and_return(true)
         repo.stub(:load_history).and_return({})
-         Repository.should_receive(:new).and_return(repo)
+        Repository.should_receive(:new).and_return(repo)
     end
 
     describe "GET 'show'" do
