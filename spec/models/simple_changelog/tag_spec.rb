@@ -2,7 +2,9 @@ require 'spec_helper'
 
 module SimpleChangelog
   describe Tag do
-  	subject { build(:tag) }
+  	subject do
+  		Tag.new('name', 'date', 'id')
+  	end
   	
   	context :methods do
 	  	it { should respond_to :name }

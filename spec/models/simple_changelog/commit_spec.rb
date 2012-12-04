@@ -2,7 +2,9 @@ require 'spec_helper'
 
 module SimpleChangelog
   describe Commit do
-  	subject { build(:commit) }
+  	subject do
+      Commit.new('msg', 'date', 'id')
+    end
   	
   	context :methods do
 	  	it { should respond_to :message }

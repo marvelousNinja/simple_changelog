@@ -1,11 +1,18 @@
-require 'spec_helper'
-
 module SimpleChangelog
-  describe Repository do
-  	let(:empty_repo) { build(:repository, :empty) }
-  	let(:repo_with_commits) { build(:repository, :with_commits) }
-  	let(:repo_with_tags) { build(:repository, :with_tags) }
+  describe Repository do  	
+  	before(:each) do
+  		@repo = double('repository',
+  									 commits: [],
+  									 tags: [],
+  									 commit_count: 0)
 
+  		Grit::Repo.should_receive(:new).with(anything).and_return(@repo)
+  	end
+
+  	let(:empty_repo) { Repository.new 'empty'  }
+  	let(:repo_with_commits) { Repository.new 'with_commits' }
+  	let(:repo_with_tags) { Repository.new 'repo_with_tags' }
+  	
 		shared_examples_for 'any repo' do
 			it { should respond_to :load_history }
 			it { should respond_to :current_version_tag }
@@ -16,7 +23,6 @@ module SimpleChangelog
 
 		shared_examples_for 'a versioned repo' do
 			it_should_behave_like 'any repo'
-			
 			its(:current_version_tag) { should_not be_empty }
 		end 	
 
@@ -27,6 +33,18 @@ module SimpleChangelog
 		end
 
 		describe :repo_with_commits do
+		  before(:each) do
+  			commit = double('commit',
+  		                  short_message:'hi',
+  					            date: 'somedate',
+  					            id: 'someid')
+
+  			@repo.stub(:commits).and_return([commit])
+        @repo.stub(:commits_between).and_return([])
+        @repo.stub(:commit).with(commit.id).and_return(commit)
+  			@repo.stub(:tags).and_return([])
+  		end
+
 			subject { repo_with_commits }
 			
 			it_should_behave_like 'a versioned repo'
@@ -37,6 +55,22 @@ module SimpleChangelog
 		end
 
 		describe :repo_with_tags do
+
+			before(:each) do
+				commit = double('commit',
+					              short_message:'hi',
+					              date: 'somedate',
+					              id: 'someid')
+				tag = double('tag',
+					              name:'hi',
+					              tag_date: 'somedate',
+                        commit: commit)
+				@repo.stub(:commits).and_return([commit])
+        @repo.stub(:commits_between).and_return([])
+        @repo.stub(:commit).with(commit.id).and_return(commit)
+				@repo.stub(:tags).and_return([tag])
+			end
+
 			subject { repo_with_tags }
 
 			it_should_behave_like 'a versioned repo'
