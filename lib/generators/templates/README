@@ -3,12 +3,13 @@ Generator mounted SimpleChangelog
 in your config/routes.rb file:
 
 It will also generate simple_changelog_url 
-and simple_changelog_uri methods
+and simple_changelog_path methods
 
 SimpleChangelog::RepositoriesHelper has been 
 connected to your app.
 
-You can use the following methods:
+You can use the following helper methods:
   #long_date_format(datetime)
   #highlight_commit_tags(commit_message)
   #current_version_tag
+  #changelog_link(html_options)

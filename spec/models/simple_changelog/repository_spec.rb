@@ -55,16 +55,15 @@ module SimpleChangelog
     end
 
     describe :repo_with_tags do
-
       before(:each) do
         commit = double('commit',
                         short_message:'hi',
                         date: 'somedate',
                         id: 'someid')
         tag = double('tag',
-                        name:'hi',
-                        tag_date: 'somedate',
-                        commit: commit)
+                     name:'hi',
+                     tag_date: 'somedate',
+                     commit: commit)
         @repo.stub(:commits).and_return([commit])
         @repo.stub(:commits_between).and_return([])
         @repo.stub(:commit).with(commit.id).and_return(commit)

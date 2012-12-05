@@ -1,4 +1,3 @@
 module SimpleChangelog
-  class Commit < Struct.new(:message, :date, :id)
-  end
+  Commit = Struct.new(:message, :date, :id)
 end

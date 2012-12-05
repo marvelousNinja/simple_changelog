@@ -3,13 +3,14 @@ module SimpleChangelog
     def initialize(path = Rails.root)
       @repo = Grit::Repo.new path
       @tags = @repo.tags
-       @commits = @repo.commits
+      @commits = @repo.commits
     end
 
     def load_history
       history = {}
+      
       if @tags.any? || @commits.any?
-        middle_tags = convert_tags(@tags).sort_by { |t| t.date }
+        middle_tags = convert_tags(@tags).sort_by { |t| t.name }
         tags = [tail_tag] + middle_tags + [head_tag]
         tags.reverse!
 
@@ -25,7 +26,8 @@ module SimpleChangelog
       if @tags.empty?        
         @commits.empty? ? '' : 'HEAD'
       else
-        @tags.last.name
+        last_tag = @tags.sort_by { |t| t.name }.last
+        last_tag.name
       end
     end
 
@@ -48,19 +50,11 @@ module SimpleChangelog
     end
 
     def convert_commits(commits)
-      commits.map do |c| 
-        Commit.new(c.short_message,
-                   c.date,
-                   c.id)
-      end
+      commits.map { |c| Commit.new(c.short_message, c.date, c.id) }
     end
 
     def convert_tags(tags)
-      tags.map do |t| 
-        Tag.new(t.name,
-                t.tag_date,
-                t.commit.id)
-      end
+      tags.map { |t| Tag.new(t.name, t.tag_date, t.commit.id) }
     end
   end
 end
