@@ -3,7 +3,7 @@ require 'spec_helper'
 module SimpleChangelog
   describe Commit do
     subject { Commit.new('msg', 'date', 'id') }
-        
+
     context 'methods' do
       describe '#message' do
         it { should respond_to :message }

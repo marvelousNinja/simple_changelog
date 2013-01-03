@@ -1,5 +1,5 @@
 module SimpleChangelog
-  describe Repository do    
+  describe Repository do
     before(:each) do
       @repo = double('repository',
                      commits: [],
@@ -12,7 +12,7 @@ module SimpleChangelog
     let(:empty_repo) { Repository.new 'empty'  }
     let(:repo_with_commits) { Repository.new 'with_commits' }
     let(:repo_with_tags) { Repository.new 'repo_with_tags' }
-    
+
     shared_examples_for 'any repo' do
       it { should respond_to :load_history }
       it { should respond_to :current_version_tag }
@@ -24,11 +24,11 @@ module SimpleChangelog
     shared_examples_for 'a versioned repo' do
       it_should_behave_like 'any repo'
       its(:current_version_tag) { should_not be_empty }
-    end   
+    end
 
     describe :empty_repo do
       subject { empty_repo }
-      
+
       it_should_behave_like 'any repo'
     end
 
@@ -46,9 +46,9 @@ module SimpleChangelog
       end
 
       subject { repo_with_commits }
-      
+
       it_should_behave_like 'a versioned repo'
-      
+
       it 'should have one record at version history' do
         repo_with_commits.load_history.keys.count.should == 1
       end
@@ -73,7 +73,7 @@ module SimpleChangelog
       subject { repo_with_tags }
 
       it_should_behave_like 'a versioned repo'
-      
+
       it 'should have at least one record at version history' do
         repo_with_tags.load_history.keys.count.should >= 1
       end

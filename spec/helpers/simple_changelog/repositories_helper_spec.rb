@@ -8,7 +8,7 @@ module SimpleChangelog
   	end
 
     subject { helper }
-    
+
     context 'methods' do
     	describe '#long_date_format' do
     		it { should respond_to(:long_date_format) }

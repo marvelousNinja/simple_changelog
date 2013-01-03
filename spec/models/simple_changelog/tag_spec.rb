@@ -3,7 +3,7 @@ require 'spec_helper'
 module SimpleChangelog
   describe Tag do
     subject { Tag.new('name', 'date', 'id') }
-    
+
     context 'methods' do
       describe '#message' do
         it { should respond_to :name }

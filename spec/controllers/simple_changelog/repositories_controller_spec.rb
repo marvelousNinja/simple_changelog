@@ -17,12 +17,12 @@ module SimpleChangelog
 
       it "assigns @changelog variable" do
         get 'show', { :use_route => "simple_changelog"}
-        assigns(:changelog).should be_kind_of(Hash)      
+        assigns(:changelog).should be_kind_of(Hash)
       end
 
       it "assigns @repo variable" do
         get 'show', { :use_route => "simple_changelog"}
-        assigns(:repo).should be_kind_of(Repository) 
+        assigns(:repo).should be_kind_of(Repository)
       end
     end
   end

@@ -10,7 +10,7 @@ module SimpleChangelog
       history = {}
 
       if @tags.any? || @commits.any?
-        middle_tags = convert_tags(@tags).sort_by { |t| t.name }
+        middle_tags = convert_tags(@tags).sort_by { |t| t.date }
         tags = [tail_tag] + middle_tags
         tags << head_tag if has_head_commits?(middle_tags)
         tags.reverse!
@@ -26,7 +26,7 @@ module SimpleChangelog
       if @tags.empty?
         @commits.empty? ? '' : 'HEAD'
       else
-        last_tag = @tags.sort_by { |t| t.name }.last
+        last_tag = @tags.sort_by { |t| t.date }.last
         last_tag.name
       end
     end
