@@ -26,7 +26,7 @@ module SimpleChangelog
       if @tags.empty?
         @commits.empty? ? '' : 'HEAD'
       else
-        last_tag = @tags.sort_by { |t| t.date }.last
+        last_tag = @tags.sort_by { |t| t.tag_date }.last
         last_tag.name
       end
     end
@@ -35,7 +35,7 @@ module SimpleChangelog
 
     def has_head_commits?(middle_tags)
       commit = @repo.commits('master', 1).first
-      !middle_tags.any? { |t| t.commit_id == commit.id }
+      middle_tags.none? { |t| t.commit_id == commit.id }
     end
 
     def head_tag
