@@ -14,7 +14,7 @@ module SimpleChangelog
     end
 
     def current_version_tag
-      Repository.new.current_version_tag
+      ENV['app_version'] ||= Repository.new.current_version_tag
     end
 
     def changelog_link(html_options = {})
