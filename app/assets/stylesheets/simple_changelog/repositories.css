@@ -16,33 +16,44 @@
 #app-changelog .commits {
   margin-left: 50px;
 }
+.commit {
+  padding: 4px;
+}
+.commit.odd {
+  background-color: #eee;
+}
 
-.commit .dev, .commit .d {
+.commit .type.dev, .commit .type.d {
   color: #2E64FE;
   font-weight: bold;
 }
 
-.commit .fix, .commit .f {
+.commit type.fix, .commit .f {
   color: #04B431;
   font-weight: bold;
 }
 
-.commit .ref, .commit .r {
+.commit .type.ref, .commit .type.r {
   color: #FF8000;
   font-weight: bold;
 }
 
-.commit .cros {
-  color: #000000;
-  font-weight: bold;
-}
-
-.commit .bug, .commit .b {
+.commit .type.bug, .commit .type.b {
   color: #B40404;
   font-weight: bold;
 }
 
-.commit .new, .commit .n {
+.commit .type.new, .commit .type.n {
   color: #6A0888;
   font-weight: bold;
+}
+
+.commit .name {
+  color: #000000;
+  font-weight: bold;
+}
+
+.commit .author {
+  color: #888;
+  font-size: .8em;
 }

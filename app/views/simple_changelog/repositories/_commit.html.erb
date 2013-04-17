@@ -1,3 +1,8 @@
-<div class="commit">
-  <%= highlight_commit_tags(commit.message) %>
+<div class="commit <%= cycle("odd", "even") %>">
+  <span class="name"><%= commit.name %></span> |
+  <% if commit.type %>
+    <span class="type <%= commit.type.downcase %>"><%= commit.type %></span> –
+  <% end %>
+  <span class="message"><%= commit.message %></span>
+  <span class="author"> by <%= commit.author %></span>
 </div>

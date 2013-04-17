@@ -1,5 +1,3 @@
-require 'grit'
-
 module SimpleChangelog
   class Engine < ::Rails::Engine
     isolate_namespace SimpleChangelog
