@@ -1,3 +1,3 @@
 module SimpleChangelog
-  Tag = Struct.new(:name, :date, :commit_id)
+  Tag = Struct.new(:name, :datetime)
 end
